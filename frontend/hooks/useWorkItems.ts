@@ -10,7 +10,12 @@ export interface WorkItem {
   createdAt: string;
 }
 
-export function useWorkItems(apiUrl: string = "http://localhost:5000/items") {
+
+
+export function useWorkItems() {
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
+
   const [items, setItems] = useState<WorkItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
